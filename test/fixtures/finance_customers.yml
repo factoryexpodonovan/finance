@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  active: false
+  view_limit: 1
+  date_limit: 2013-05-15
+  admin: false
+  password_digest: MyString
+
+two:
+  name: MyString
+  active: false
+  view_limit: 1
+  date_limit: 2013-05-15
+  admin: false
+  password_digest: MyString

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @finance_customer.name %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @finance_customer.active %>
+</p>
+
+<p>
+  <b>View limit:</b>
+  <%= @finance_customer.view_limit %>
+</p>
+
+<p>
+  <b>Date limit:</b>
+  <%= @finance_customer.date_limit %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%= @finance_customer.admin %>
+</p>
+
+<p>
+  <b>Password digest:</b>
+  <%= @finance_customer.password_digest %>
+</p>
+
+
+<%= link_to 'Edit', edit_finance_customer_path(@finance_customer) %> |
+<%= link_to 'Back', finance_customers_path %>

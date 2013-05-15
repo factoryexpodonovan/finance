@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @allowed_state.customer_id %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @allowed_state.state_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_allowed_state_path(@allowed_state) %> |
+<%= link_to 'Back', allowed_states_path %>

@@ -1,0 +1,37 @@
+<%= form_for(@finance_lead) do |f| %>
+  <% if @finance_lead.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@finance_lead.errors.count, "error") %> prohibited this finance_lead from being saved:</h2>
+
+      <ul>
+      <% @finance_lead.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_first,name_last,address,city,phone_home,phone_work,email %><br />
+    <%= f.text_field :name_first,name_last,address,city,phone_home,phone_work,email %>
+  </div>
+  <div class="field">
+    <%= f.label :best_time_to_call,is_interested_in,home_is_used_for,home_is_a,home_is_on %><br />
+    <%= f.text_field :best_time_to_call,is_interested_in,home_is_used_for,home_is_a,home_is_on %>
+  </div>
+  <div class="field">
+    <%= f.label :year_home_was_built,credit_standing,contact_by %><br />
+    <%= f.text_field :year_home_was_built,credit_standing,contact_by %>
+  </div>
+  <div class="field">
+    <%= f.label :state_id %><br />
+    <%= f.text_field :state_id %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.text_area :comments %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

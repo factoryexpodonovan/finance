@@ -1,4 +1,16 @@
 Finance::Application.routes.draw do
+  resources :finance_customers
+
+
+  resources :allowed_states
+
+
+  resources :finance_leads
+
+
+  resources :states
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

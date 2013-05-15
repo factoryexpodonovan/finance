@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name_first,name_last,address,city,phone_home,phone_work,email: MyString
+  best_time_to_call,is_interested_in,home_is_used_for,home_is_a,home_is_on: MyString
+  year_home_was_built,credit_standing,contact_by: MyString
+  state_id: 
+  comments: MyText
+
+two:
+  name_first,name_last,address,city,phone_home,phone_work,email: MyString
+  best_time_to_call,is_interested_in,home_is_used_for,home_is_a,home_is_on: MyString
+  year_home_was_built,credit_standing,contact_by: MyString
+  state_id: 
+  comments: MyText
