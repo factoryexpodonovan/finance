@@ -35,6 +35,11 @@ namespace :deploy do
   task :symlink_db, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
   end
+  desc "Restart Unicorn"
+  task :unicorn_finance_restart, :roles => :app do
+    run "#{try_sudo} service unicorn-finance restart"
+  end
+  
 end
 
 after "deploy", "deploy:migrate"
