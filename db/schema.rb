@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516191116) do
+ActiveRecord::Schema.define(:version => 20130517221544) do
 
   create_table "allowed_states", :force => true do |t|
     t.integer  "customer_id"
@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(:version => 20130516191116) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "remember_token"
+    t.string   "email"
   end
+
+  add_index "finance_customers", ["remember_token"], :name => "index_finance_customers_on_remember_token"
 
   create_table "finance_leads", :force => true do |t|
     t.string   "name_first"
@@ -58,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130516191116) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "abbreviation"
+    t.boolean  "is_active"
   end
 
 end

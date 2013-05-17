@@ -1,4 +1,8 @@
 class FinanceCustomersController < ApplicationController
+  
+  
+  
+  
   # GET /finance_customers
   # GET /finance_customers.json
   def index

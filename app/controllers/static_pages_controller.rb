@@ -7,7 +7,5 @@ class StaticPagesController < ApplicationController
 
   def showlead
   end
-
-  def login
-  end
+  
 end

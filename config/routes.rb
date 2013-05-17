@@ -6,13 +6,19 @@ Finance::Application.routes.draw do
   root :to => 'static_pages#home'
   
   
+  #routes for static pages
+  match '/admin',       to: 'static_pages#admin'
+  match '/login',       to: 'static_pages#login'
+  
+  
+  
   get "static_pages/home"
 
   get "static_pages/admin"
 
   get "static_pages/showlead"
 
-  get "static_pages/login"
+
 
   resources :finance_customers
 
@@ -24,6 +30,13 @@ Finance::Application.routes.draw do
 
 
   resources :states
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  
+  
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
 
   # The priority is based upon order of creation:

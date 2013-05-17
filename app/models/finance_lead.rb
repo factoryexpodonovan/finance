@@ -21,6 +21,7 @@
 #  comments            :text
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  phone_work          :string(255)
 #
 
 class FinanceLead < ActiveRecord::Base

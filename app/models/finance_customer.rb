@@ -11,8 +11,21 @@
 #  password_digest :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  remember_token  :string(255)
 #
 
 class FinanceCustomer < ActiveRecord::Base
-  attr_accessible :active, :admin, :date_limit, :name, :password_digest, :view_limit
+  attr_accessible :name, :email
+                  :password, :password_confirmation
+                  
+  has_secure_password
+  
+  before_save { |user| user.name = name.downcase }
+  
+  
+  validates :name,                  presence: true, 
+  validates :password,              presence: true,   length: {minimum: 6}
+  validates :password_confirmation, presence: true
+  
+  
 end

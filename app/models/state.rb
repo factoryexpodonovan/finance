@@ -7,6 +7,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  abbreviation :string(255)
+#  is_active    :boolean
 #
 
 class State < ActiveRecord::Base
