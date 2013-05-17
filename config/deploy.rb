@@ -37,7 +37,7 @@ namespace :deploy do
   end
   desc "Restart Unicorn"
   task :unicorn_finance_restart, :roles => :app do
-    run "#{try_sudo} service unicorn-finance restart"
+    run "#{try_sudo} /etc/init.d/unicorn-finance restart"
   end
   
 end
