@@ -36,7 +36,7 @@ listen 9501, :tcp_nopush => true
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "/tmp/unicorn.finance.pid"
+pid APP_PATH_SHARE + "/pids/unicorn.finance.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
