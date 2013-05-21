@@ -8,7 +8,7 @@ Finance::Application.routes.draw do
   
   #routes for static pages
   match '/admin',       to: 'static_pages#admin'
-  match '/login',       to: 'static_pages#login'
+  match '/login',       to: 'sessions#new'
   
   
   

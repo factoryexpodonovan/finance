@@ -10,13 +10,15 @@ class SessionsController < ApplicationController
       sign_in finance_customer
       redirect_to finance_customer
     else
-      flash[:error] = 'Invalid Login Information'
+      flash.now[:error] = 'Invalid Login Information'
       render 'new'
     end
     
   end
 
   def destroy
+     sign_out
+     redirect_to 'sessions#new'
   end
   
 end
