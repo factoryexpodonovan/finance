@@ -20,6 +20,7 @@ Finance::Application.routes.draw do
 
   localized do
     resources :finance_customers
+    resources :finance_leads
   end
 
   
@@ -28,8 +29,7 @@ Finance::Application.routes.draw do
   resources :allowed_states
 
 
-  resources :finance_leads
-
+  
 
   resources :states
   
