@@ -18,9 +18,11 @@ Finance::Application.routes.draw do
 
   get "static_pages/showlead"
 
+  localized do
+    resources :finance_customers
+  end
 
-
-  resources :finance_customers
+  
 
 
   resources :allowed_states

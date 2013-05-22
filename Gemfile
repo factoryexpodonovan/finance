@@ -10,6 +10,10 @@ gem 'bootstrap_forms'
 
 gem 'closure-compiler'
 
+gem "friendly_id", "~> 4.0.9"
+gem "i18n_routing", "~> 0.6.2"
+gem "mail", "~> 2.5.4"
+
 group :development do
   gem "mysql2", "~> 0.3.11"
 end

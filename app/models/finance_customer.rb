@@ -21,14 +21,26 @@ class FinanceCustomer < ActiveRecord::Base
                   
   has_secure_password
   
-  before_save { |user| user.name = name.downcase }
+  extend FriendlyId
+  friendly_id :name
+  
+  before_save { |finance_customer| finance_customer.name = name.downcase }
   
   before_save :create_remember_token
   
   
-  validates :name,                  presence: true
-  validates :password,              presence: true,   length: { minimum: 6}
-  validates :password_confirmation, presence: true
+  validates :name,                  :presence => true,
+                                    :uniqueness =>  true
+  
+  validates :password,              :presence =>  true,
+                                    :confirmation =>  true,
+                                    :length =>  { :minimum => 6 },
+                                    :on =>  :create
+                                    
+  validates :email,                 :presence =>  true,
+                                    :email  =>  true,
+                                    :uniqueness =>  true
+                                    
   
   
   

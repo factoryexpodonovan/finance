@@ -1,6 +1,27 @@
-<h1>Editing finance_customer</h1>
+<% provide(:title, "Edit Profile") %>
 
-<%= render 'form' %>
+<h1>Update Your Profile</h1>
 
-<%= link_to 'Show', @finance_customer %> |
-<%= link_to 'Back', finance_customers_path %>
+<div class = "row">
+	<div class="span6 offset3">
+		<%= bootstrap_form_for(@finance_customer) do |f| %>
+		<!--<%= render 'shared/error_messages' %>-->
+		
+		<fieldset>
+			<legend>Your Profile</legend>
+			
+			<%= f.uneditable_input :name, :label => 'Login name' %>
+			
+			<%= f.text_field :email, :label => 'Contact Email' %>
+			
+			<%= f.text_field :password, :label => 'Password' %>
+			<%= f.text_field :password_confirmation, :label => 'Confirm Password' %>
+			
+			<%= f.button :label => "Save Changes" %>
+			
+		</fieldset>
+		
+		<% end %>
+		
+	</div>
+</div>

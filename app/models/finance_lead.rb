@@ -30,4 +30,17 @@ class FinanceLead < ActiveRecord::Base
                   :name_last, :address, :city, :phone_home, :phone_work,
                   :email, :state_id, :year_home_was_built, :credit_standing,
                   :contact_by
+                  
+  
+  extend FriendlyId
+  friendly_id :email
+  
+  
+  validates :name_first, :name_last, :phone_home, :email,  :presence => true
+                                  
+  validates :email,           :uniqueness =>  true,
+                              :email      =>  true
+  
+  before_save {|finance_lead| finace_lead.email = email.downcase  }
+  
 end
