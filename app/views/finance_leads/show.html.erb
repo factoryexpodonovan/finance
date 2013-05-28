@@ -1,30 +1,79 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name first,name last,address,city,phone home,phone work,email:</b>
-  <%= @finance_lead.name_first,name_last,address,city,phone_home,phone_work,email %>
-</p>
+<div class="row">
+	<div class="span8 offset2">
+		<table class="table table-hover">
+			<caption>Finance Prospect Details</caption>
+			<tbody>
+				<tr>
+					<th>eMail</th>
+					<td><%= @finance_lead.email %></td>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<td><%= @finance_lead.fullname %></td>
+				</tr>
+				<tr>
+					<th>Address</th>
+					<td><%= @finance_lead.address %></td>
+				</tr>
+				<tr>
+					<th>City</th>
+					<td><%= @finance_lead.city %></td>
+				</tr>
+				
+				<tr>
+					<th>ZIP</th>
+					<td><%= @finance_lead.zip %></td>
+				</tr>
+				<tr>
+					<th>Home Phone</th>
+					<td><%= @finance_lead.phone_home %></td>
+				</tr>
+				<tr>
+					<th>Work Phone</th>
+					<td><%= @finance_lead.phone_work %></td>
+				</tr>
+				<tr>
+					<th>Best Contact Time</th>
+					<td><%= @finance_lead.best_time_to_call %></td>
+				</tr>
+				<tr>
+					<th>is_interested_in</th>
+					<td><%= @finance_lead.is_interested_in %></td>
+				</tr>
+				<tr>
+					<th>home_is_used_for</th>
+					<td><%= @finance_lead.home_is_used_for %></td>
+				</tr>
+				<tr>
+					<th>home_is_a</th>
+					<td><%= @finance_lead.home_is_a %></td>
+				</tr>
+				<tr>
+					<th>home_is_on</th>
+					<td><%= @finance_lead.home_is_on %></td>
+				</tr>
+				<tr>
+					<th>year_home_was_built</th>
+					<td><%= @finance_lead.year_home_was_built %></td>
+				</tr>
+				<tr>
+					<th>credit_standing</th>
+					<td><%= @finance_lead.credit_standing %></td>
+				</tr>
+				<tr>
+					<th>contact_by</th>
+					<td><%= @finance_lead.contact_by %></td>
+				</tr>
+				<tr>
+					<th>comments</th>
+					<td><%= @finance_lead.comments %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
-<p>
-  <b>Best time to call,is interested in,home is used for,home is a,home is on:</b>
-  <%= @finance_lead.best_time_to_call,is_interested_in,home_is_used_for,home_is_a,home_is_on %>
-</p>
 
-<p>
-  <b>Year home was built,credit standing,contact by:</b>
-  <%= @finance_lead.year_home_was_built,credit_standing,contact_by %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @finance_lead.state_id %>
-</p>
-
-<p>
-  <b>Comments:</b>
-  <%= @finance_lead.comments %>
-</p>
-
-
-<%= link_to 'Edit', edit_finance_lead_path(@finance_lead) %> |
 <%= link_to 'Back', finance_leads_path %>

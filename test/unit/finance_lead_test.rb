@@ -22,6 +22,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  phone_work          :string(255)
+#  slug                :string(255)
 #
 
 require 'test_helper'

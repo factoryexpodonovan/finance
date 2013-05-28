@@ -22,6 +22,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  phone_work          :string(255)
+#  slug                :string(255)
 #
 
 class FinanceLead < ActiveRecord::Base
@@ -29,11 +30,11 @@ class FinanceLead < ActiveRecord::Base
                   :home_is_a, :home_is_on, :comments, :name_first,
                   :name_last, :address, :city, :phone_home, :phone_work,
                   :email, :state_id, :year_home_was_built, :credit_standing,
-                  :contact_by
+                  :contact_by, :zip
                   
   
   extend FriendlyId
-  friendly_id :email
+  friendly_id :friendly_email, use: :slugged
   
   
   validates :name_first, :name_last, :phone_home, :email,  :presence => true
@@ -41,6 +42,19 @@ class FinanceLead < ActiveRecord::Base
   validates :email,           :uniqueness =>  true,
                               :email      =>  true
   
-  before_save {|finance_lead| finace_lead.email = email.downcase  }
+  before_save {|finance_lead| finance_lead.email = email.downcase  }
+  
+  def friendly_email
+    firstpart = email.split("@")[0]
+    firstpart_clean = firstpart.gsub(".", "dot")
+    lastpart = email.split("@")[1]
+    lastpart_clean = lastpart.gsub(".", "dot")
+    
+    firstpart_clean + "at" + lastpart_clean
+  end
+  
+  def fullname
+    name_first + " " + name_last
+  end
   
 end
