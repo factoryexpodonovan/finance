@@ -15,8 +15,20 @@
 			<tr>
 				<th>Date-Time Submitted</th>
 				<th>Prospect's Name</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Credit</th>
+				<th>Details</th>
+			</tr>
+			<% @finance_leads.each do |finance_lead| %>
+				<td><%= finance_lead.created_at %></td>
+				<td><%= finance_lead.fullname %></td>
+				<td><%= finance_lead.city %></td>
+				<td><%= State.find_by_id(finance_lead.state_id).abbreviation %></td>
+				<td><%= finance_lead.credit_standing %></td>
+				<td><%= link_to 'Show', finance_lead %></td>
 				
-			</tr>			
+			<% end %>
 		</table>
 	</div>
 </div>

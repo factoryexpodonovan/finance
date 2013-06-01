@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <title>Finance</title>
+  <%=  render 'layouts/includes/bootstrap_css' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,10 +14,10 @@
 <p>Not signed in</p>
 <% end %>
 <div class="container">
+	<%= render partial: "layouts/flash_messages", flash: flash %> 
 	<%= yield %>
 </div>
 
-
-<%= javascript_include_tag "application" %>
+	<%=  render 'layouts/includes/bootstrap_js' %>
 </body>
 </html>

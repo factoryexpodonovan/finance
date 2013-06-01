@@ -1,18 +1,28 @@
-<div class='navbar  navbar-fixed-top'>
+<div class='navbar'>
 	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" href="#">Finance Prospects</a>
-			<div class="nav-collapse collapse">
+		
+			<a class="brand pull-left" href="#">Finance Prospects</a>
+			
 				<ul class="nav">
 					<% if signed_in? %>
 						<li><a href="#">Signed in as <strong><%= current_finance_customer.name %></strong></a></li>
+						<li><a href="#">My Account</a></li>
+						<li>
+							<%= link_to "Sign Out", signout_path, method: "delete"%>
+						</li>
+						
 					<% else %>
 						<li ></li>
-					<% end %>	
+					<% end %>
+					<% if current_finance_customer.admin? %>
+						<li class="dropdown pull-right">
+							admin
+						</li>
+					<% end %>
 				</ul>
 						
 				
-			</div>	
-		</div>
+			
+		
 	</div>
 </div>

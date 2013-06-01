@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528203938) do
+ActiveRecord::Schema.define(:version => 20130530174420) do
 
   create_table "allowed_states", :force => true do |t|
     t.integer  "customer_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130528203938) do
     t.string   "phone_work"
     t.string   "slug"
     t.string   "zip"
+    t.string   "state_abb"
   end
 
   add_index "finance_leads", ["slug"], :name => "index_finance_leads_on_slug"

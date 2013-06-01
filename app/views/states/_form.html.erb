@@ -10,10 +10,11 @@
       </ul>
     </div>
   <% end %>
+  
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :is_active %><br />
+    <%= check_box 'state', 'is_active', {}, 'true', 'false' %>
   </div>
   <div class="actions">
     <%= f.submit %>

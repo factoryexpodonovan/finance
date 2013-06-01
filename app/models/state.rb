@@ -11,5 +11,7 @@
 #
 
 class State < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :is_active
+  
+  validates :abbreviation,           :uniqueness =>  true
 end

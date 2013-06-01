@@ -9,4 +9,9 @@ en:
   activerecord:
     models:
       finance_customer: "User"
+  helpers:
+    label:
+      finance_lead:
+        state_abb:  'State'
+        
   

@@ -1,8 +1,19 @@
 class FinanceLeadsController < ApplicationController
+  
+  before_filter :signed_in_finance_customer,
+                  only: [:index, :show]
+  
+  before_filter :admin_user,
+                  only: [:new, :edit, :update, :destroy]
+  
   # GET /finance_leads
   # GET /finance_leads.json
   def index
-    @finance_leads = FinanceLead.all
+    if current_finance_customer.admin? 
+      @finance_leads = FinanceLead.all
+    else
+      @finance_leads = FinanceLead.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +91,15 @@ class FinanceLeadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+  def admin_user
+    redirect_to(root_path) unless current_finance_customer.admin?
+  end
+  
+  
+  
+  
+  
 end

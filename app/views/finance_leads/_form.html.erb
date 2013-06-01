@@ -1,102 +1,76 @@
-<%= form_for(@finance_lead) do |f| %>
-  <% if @finance_lead.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@finance_lead.errors.count, "error") %> prohibited this finance_lead from being saved:</h2>
+<div class="container">
 
-      <ul>
-      <% @finance_lead.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name_first %><br />
-    <%= f.text_field :name_first %>
-  </div>
-  
-	<div class="field">
-  		<%= f.label :name_last %><br />
-  		<%= f.text_field :name_last %>
+<%= bootstrap_form_for(@finance_lead) do |f| %>
+	<div class="row-fluid">
+		<div class="span6">
+			<%= f.text_field :name_first, :label => "First Name*" %>
+		</div>
+		<div class="span6">
+			<%= f.text_field :name_last, :label => "Last Name*"%>
+		</div>
+	</div><!--endrow-->
+	<div class="row-fluid">
+		<div class="span12">
+			<%= f.text_area :address, :label => "Address", :size => '30x3', :style => 'width:100%' %>
+		</div>
+	</div><!--endrow-->
+	<div class="row-fluid">
+		<div class="span6">
+			<%= f.text_field :city %>
+			<%= f.text_field :zip %>
+		</div>
+		<div class="span6">
+			<div class="field">
+  				<% state_array = options_from_collection_for_select(State.where("is_active = ?", true), :abbreviation, :name, :prompt => true) %>
+  				<%= f.select(:state_abb, state_array, {:include_blank => 'Please select a State'}) %>
+  			</div>
+		</div>
+	</div><!--endrow-->
+	<div class="row-fluid">
+		<div class="span6">
+			<%= f.telephone_field :phone_home, :label => "Home Phone*"%>
+			<%= f.email_field :email, :label => "email address*"%>
+		</div>
+		<div class="span6">
+			<%= f.telephone_field :phone_work, :label => "Work Phone*"%>
+			<%= f.text_field :best_time_to_call %>
+		</div>
+	</div><!--endrow-->
+	<div class="row-fluid">
+		<div class = "span6">
+			<% is_interested_in_options = ["Purchasing a Home", "Purchasing a Home and Land", "Refinancing Exisiting Loan(s)"]%>
+			<%= f.radio_buttons :is_interested_in, is_interested_in_options, :label => "I am interested in" %>
+			
+			<% home_is_used_for_options = ["Primary Residence", "vacation Home", "Investment Property"] %>
+			<%= f.radio_buttons :home_is_used_for, home_is_used_for_options, :label => "The Home is used for" %>
+		</div>
+		<div class = "span6">
+		</div>
 	</div>
-	
-	<div class="field">
-  		<%= f.label :address %><br />
-  		<%= f.text_field :address %>
+	<div class="row-fluid">
+		<div class = "span6">
+		</div>
+		<div class = "span6">
+		</div>
 	</div>
-	
-	<div class="field">
-  		<%= f.label :city %><br />
-  		<%= f.text_field :city %>
+	<div class="row-fluid">
+		<div class = "span6">
+		</div>
+		<div class = "span6">
+		</div>
 	</div>
-	
-	<div class="field">
-  		<%= f.label :phone_home %><br />
-  		<%= f.text_field :phone_home %>
+	<div class="row-fluid">
+		<div class = "span6">
+		</div>
+		<div class = "span6">
+		</div>
 	</div>
-	
-	<div class="field">
-  		<%= f.label :phone_work %><br />
-  		<%= f.text_field :phone_work %>
-	</div>
-	
-	<div class="field">
-  		<%= f.label :email %><br />
-  		<%= f.text_field :email %>
-	</div>
-	
-  <div class="field">
-    <%= f.label :best_time_to_call %><br />
-    <%= f.text_field :best_time_to_call %>
-  </div>
-  
-  <div class="field">
-  		<%= f.label :is_interested_in %><br />
-  		<%= f.text_field :is_interested_in %>
-	</div>
-	
-	<div class="field">
-  		<%= f.label :home_is_used_for %><br />
-  		<%= f.text_field :home_is_used_for %>
-	</div>
-	
-	<div class="field">
-  		<%= f.label :home_is_a %><br />
-  		<%= f.text_field :home_is_a %>
-	</div>
-	
-	<div class="field">
-  		<%= f.label :home_is_on %><br />
-  		<%= f.text_field :home_is_on %>
-	</div>
-	
-	
-  <div class="field">
-    <%= f.label :year_home_was_built %><br />
-    <%= f.text_field :year_home_was_built %>
-  </div>
-  
-  <div class="field">
-  		<%= f.label :credit_standing %><br />
-  		<%= f.text_field :credit_standing %>
-	</div>
-	
-	<div class="field">
-  		<%= f.label :contact_by %><br />
-  		<%= f.text_field :contact_by %>
-	</div>
-	
-	
-  <div class="field">
-    <%= f.label :state_id %><br />
-    <%= f.text_field :state_id %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
+</div>
+
+	
+  
+  
+ 
+

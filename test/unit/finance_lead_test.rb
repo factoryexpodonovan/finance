@@ -23,6 +23,8 @@
 #  updated_at          :datetime         not null
 #  phone_work          :string(255)
 #  slug                :string(255)
+#  zip                 :string(255)
+#  state_abb           :string(255)
 #
 
 require 'test_helper'

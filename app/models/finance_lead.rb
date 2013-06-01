@@ -23,9 +23,13 @@
 #  updated_at          :datetime         not null
 #  phone_work          :string(255)
 #  slug                :string(255)
+#  zip                 :string(255)
+#  state_abb           :string(255)
 #
 
 class FinanceLead < ActiveRecord::Base
+  
+  belongs_to :state
   attr_accessible :best_time_to_call, :is_interested_in, :home_is_used_for,
                   :home_is_a, :home_is_on, :comments, :name_first,
                   :name_last, :address, :city, :phone_home, :phone_work,
@@ -37,12 +41,13 @@ class FinanceLead < ActiveRecord::Base
   friendly_id :friendly_email, use: :slugged
   
   
-  validates :name_first, :name_last, :phone_home, :email,  :presence => true
+  validates :name_first, :name_last, :phone_home, :email, :state_abb,  :presence => true
                                   
   validates :email,           :uniqueness =>  true,
                               :email      =>  true
   
   before_save {|finance_lead| finance_lead.email = email.downcase  }
+  before_save {|finance_lead| finance_lead.state_id = State.find_by_abbreviation(finance_lead.state_abb).id}
   
   def friendly_email
     firstpart = email.split("@")[0]
@@ -56,5 +61,10 @@ class FinanceLead < ActiveRecord::Base
   def fullname
     name_first + " " + name_last
   end
+  
+  def self.filter_allowed_for(finance_customer)
+    where(:state_id => finance_customer.state_ids)
+  end
+  
   
 end

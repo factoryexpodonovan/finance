@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if finance_customer && finance_customer.authenticate(params[:session][:password])
       #sign in the user and redirect to the finance_customer's page
       sign_in finance_customer
-      redirect_to finance_customer
+      redirect_to '/leads'
     else
       flash.now[:error] = 'Invalid Login Information'
       render 'new'
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
      sign_out
-     redirect_to 'sessions#new'
+     redirect_to signin_url
   end
   
 end
