@@ -37,13 +37,13 @@ namespace :deploy do
   end
   desc "Restart Unicorn"
   task :unicorn_finance_restart, :roles => :app do
-    run "#{try_sudo} /etc/init.d/unicorn-finance restart"
+    run "sudo /etc/init.d/unicorn-finance restart"
   end
   
 end
 
 after "deploy", "deploy:migrate"
-# after "deploy", "deploy:unicorn_finance_restart"
+after "deploy", "deploy:unicorn_finance_restart"
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
