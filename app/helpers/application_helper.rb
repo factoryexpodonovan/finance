@@ -15,7 +15,7 @@ module ApplicationHelper
     end
   end
   
-  def placehold(width,height,text)
+  def placehold(width,height)
     
     random_color = "%06x" % (rand * 0xffffff)
     image = "<img src=\"http://placehold.it/#{width}x#{height}/#{random_color}\">"
