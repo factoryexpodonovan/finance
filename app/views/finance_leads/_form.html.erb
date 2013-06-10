@@ -1,6 +1,7 @@
-<div class="container">
+
 
 <%= bootstrap_form_for(@finance_lead) do |f| %>
+<fieldset>
 	<div class="row-fluid">
 		<div class="span6">
 			<%= f.text_field :name_first, :label => "First Name*" %>
@@ -11,7 +12,7 @@
 	</div><!--endrow-->
 	<div class="row-fluid">
 		<div class="span12">
-			<%= f.text_area :address, :label => "Address", :size => '30x3', :style => 'width:100%' %>
+			<%= f.text_area :address, :label => "Address", :size => '30x2', :style => 'width:100%' %>
 		</div>
 	</div><!--endrow-->
 	<div class="row-fluid">
@@ -37,37 +38,31 @@
 		</div>
 	</div><!--endrow-->
 	<div class="row-fluid">
-		<div class = "span6">
+		<div class = "span12">
 			<% is_interested_in_options = ["Purchasing a Home", "Purchasing a Home and Land", "Refinancing Exisiting Loan(s)"]%>
 			<%= f.radio_buttons :is_interested_in, is_interested_in_options, :label => "I am interested in" %>
 			
-			<% home_is_used_for_options = ["Primary Residence", "vacation Home", "Investment Property"] %>
+			<% home_is_used_for_options = ["Primary Residence", "Vacation Home", "Investment Property"] %>
 			<%= f.radio_buttons :home_is_used_for, home_is_used_for_options, :label => "The Home is used for" %>
+			
+			<% home_is_a_options =["Singlewide","Doublewide","Site Built Home"] %>
+			<%= f.radio_buttons :home_is_a, home_is_a_options, :label => "The Home is a"%>
+			
+			<% home_is_on_options = ["MH Landlease Park/Community", "Leased, Family or Friend's Land", 
+									"Own Land, But don't need loan for land", "Own Land, Need land/home financing"]%>
+			<%= f.radio_buttons :home_is_on, home_is_on_options, :label => "The Home is/will be on"%>
+			
+			<% year_home_was_built_array = ["Pre-1970"] + (1970..(Time.now.year)).to_a + ["New", "Unknown"] %> 
+			<%= f.select(:year_home_was_built, year_home_was_built_array, {:include_blank => 'Select'}) %>
+			
+			<%= f.actions %>
+			</fieldset>
 		</div>
-		<div class = "span6">
-		</div>
+		
 	</div>
-	<div class="row-fluid">
-		<div class = "span6">
-		</div>
-		<div class = "span6">
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class = "span6">
-		</div>
-		<div class = "span6">
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class = "span6">
-		</div>
-		<div class = "span6">
-		</div>
-	</div>
+	
 <% end %>
 
-</div>
 
 	
   

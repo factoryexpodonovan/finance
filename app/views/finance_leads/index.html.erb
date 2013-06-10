@@ -33,55 +33,6 @@
 	</div>
 </div>
 
-<h1>Listing finance_leads</h1>
-
-<table>
-  <tr>
-    <th>Name first</th>
-    <th>name last</th>
-    <th>address,</th>
-    <th>city</th>
-    <th>phone home</th>
-    <th>phone work</th>
-    <th>email</th>
-    <th>Best time to call</th>
-    <th>is interested in</th>
-    <th>home is used for</th>
-    <th>home is a</th>
-    <th>home is on</th>
-    <th>Year home was built</th>
-    <th>credit standing</th>
-    <th>contact by</th>
-    <th>State</th>
-    <th>Comments</th>
-  </tr>
-
-<% @finance_leads.each do |finance_lead| %>
-  <tr>
-    <td><%= finance_lead.name_first %></td>
-    <td><%= finance_lead.name_last %></td>
-    <td><%= finance_lead.address %></td>
-    <td><%= finance_lead.city %></td>
-    <td><%= finance_lead.phone_home %></td>
-    <td><%= finance_lead.phone_work %></td>
-    <td><%= finance_lead.email %></td>
-    <td><%= finance_lead.best_time_to_call %></td>
-    <td><%= finance_lead.is_interested_in %></td>
-    <td><%= finance_lead.home_is_used_for %></td>
-    <td><%= finance_lead.home_is_a %></td>
-    <td><%= finance_lead.home_is_on %></td>
-    
-    <td><%= finance_lead.year_home_was_built %></td>
-    <td><%= finance_lead.credit_standing %></td>
-    <td><%= finance_lead.contact_by %></td>
-    <td><%= finance_lead.state_id %></td>
-    <td><%= finance_lead.comments %></td>
-    <td><%= link_to 'Show', finance_lead %></td>
-    <td><%= link_to 'Edit', edit_finance_lead_path(finance_lead) %></td>
-    <td><%= link_to 'Destroy', finance_lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
 <br />
 

@@ -11,6 +11,8 @@ Finance::Application.routes.draw do
   match '/leads',       to: 'finance_leads#index'
   
   match 'admin/add',    to: 'finance_customers#new'
+  
+  match '/thankyou',    to: 'static_pages#thankyou'
 
    
   get "static_pages/home"

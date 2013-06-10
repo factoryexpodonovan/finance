@@ -29,42 +29,46 @@
 
 class FinanceLead < ActiveRecord::Base
   
+  attr_accessible :name_first,  :name_last, :email,
+                  :address, :zip, :city,  :state_abb,
+                  :phone_home,  :phone_work,
+                  :is_interested_in,  :home_is_used_for,
+                  :home_is_a, :home_is_on,  :year_home_was_built,
+                  :credit_standing, :contact_by,  :best_time_to_call,
+                  :comments
+  
   belongs_to :state
-  attr_accessible :best_time_to_call, :is_interested_in, :home_is_used_for,
-                  :home_is_a, :home_is_on, :comments, :name_first,
-                  :name_last, :address, :city, :phone_home, :phone_work,
-                  :email, :state_id, :year_home_was_built, :credit_standing,
-                  :contact_by, :zip
-                  
+  
+  
   
   extend FriendlyId
-  friendly_id :friendly_email, use: :slugged
+  friendly_id :email, use: :slugged
   
   
-  validates :name_first, :name_last, :phone_home, :email, :state_abb,  :presence => true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
+  
+  validates :name_first,  presence: true
+  validates :name_last,   presence: true
+  validates :state_abb,   presence: true
                                   
-  validates :email,           :uniqueness =>  true,
-                              :email      =>  true
+  validates :email,       presence: true,
+                          format: { with: VALID_EMAIL_REGEX },
+                          uniqueness: true
+  
+
   
   before_save {|finance_lead| finance_lead.email = email.downcase  }
   before_save {|finance_lead| finance_lead.state_id = State.find_by_abbreviation(finance_lead.state_abb).id}
   
-  def friendly_email
-    firstpart = email.split("@")[0]
-    firstpart_clean = firstpart.gsub(".", "dot")
-    lastpart = email.split("@")[1]
-    lastpart_clean = lastpart.gsub(".", "dot")
-    
-    firstpart_clean + "at" + lastpart_clean
-  end
   
   def fullname
     name_first + " " + name_last
   end
   
-  def self.filter_allowed_for(finance_customer)
-    where(:state_id => finance_customer.state_ids)
-  end
+  #def self.filter_allowed_for(finance_customer)
+  #  where(:state_id => finance_customer.state_ids)
+  #end
   
   
 end

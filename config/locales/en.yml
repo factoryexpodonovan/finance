@@ -4,8 +4,8 @@
 en:
 #  hello: "Hello world"
   resources:
-    finance_customers:  'users'
-    finance_leads:      'leads'
+    #finance_customers:  'users'
+    #finance_leads:      'leads'
   activerecord:
     models:
       finance_customer: "User"

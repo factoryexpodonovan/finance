@@ -14,5 +14,12 @@ module ApplicationHelper
         flash_type.to_s
     end
   end
+  
+  def placehold(width,height,text)
+    
+    random_color = "%06x" % (rand * 0xffffff)
+    image = "<img src=\"http://placehold.it/#{width}x#{height}/#{random_color}\">"
+    return image.html_safe
+  end
 
 end

@@ -11,7 +11,7 @@
 <% if signed_in? %>
 <%= render 'layouts/menu' %>
 <% else %>
-<p>Not signed in</p>
+<p style="display: none;">Not signed in</p>
 <% end %>
 <div class="container">
 	<%= render partial: "layouts/flash_messages", flash: flash %> 

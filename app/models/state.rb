@@ -13,5 +13,7 @@
 class State < ActiveRecord::Base
   attr_accessible :is_active
   
+  has_many :finance_leads
+  
   validates :abbreviation,           :uniqueness =>  true
 end

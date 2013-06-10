@@ -1,19 +1,15 @@
 class FinanceLeadsController < ApplicationController
   
-  before_filter :signed_in_finance_customer,
-                  only: [:index, :show]
+  #before_filter :signed_in_finance_customer,
+  #                only: [:index, :show]
   
-  before_filter :admin_user,
-                  only: [:new, :edit, :update, :destroy]
+  #before_filter :admin_user,
+  #                only: [:new, :edit, :update, :destroy]
   
   # GET /finance_leads
   # GET /finance_leads.json
   def index
-    if current_finance_customer.admin? 
       @finance_leads = FinanceLead.all
-    else
-      @finance_leads = FinanceLead.all
-    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,17 +47,14 @@ class FinanceLeadsController < ApplicationController
   # POST /finance_leads
   # POST /finance_leads.json
   def create
+    
     @finance_lead = FinanceLead.new(params[:finance_lead])
-
-    respond_to do |format|
-      if @finance_lead.save
-        format.html { redirect_to @finance_lead, notice: 'Finance lead was successfully created.' }
-        format.json { render json: @finance_lead, status: :created, location: @finance_lead }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @finance_lead.errors, status: :unprocessable_entity }
-      end
+    if @finance_lead.save
+      redirect_to @finance_lead
+    else
+      render 'new'
     end
+    
   end
 
   # PUT /finance_leads/1
@@ -92,11 +85,7 @@ class FinanceLeadsController < ApplicationController
     end
   end
   
-  private
   
-  def admin_user
-    redirect_to(root_path) unless current_finance_customer.admin?
-  end
   
   
   
