@@ -45,7 +45,18 @@ class FinanceCustomer < ActiveRecord::Base
                                     :uniqueness =>  true
                                     
   
-  
+  def limit
+    
+    ## set to view_limit UNLESS it's unset or 0
+    view_limit unless (view_limit.nil? || view_limit == 0)
+    
+    ##set to date_limit UNLESS it's unset
+    date_limit unless (date_limit.nil?)
+    
+     
+    end
+    
+  end
   
   private
   

@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
+    @finance_customers = FinanceCustomer.all
   end
 
   def showlead
@@ -12,5 +13,7 @@ class StaticPagesController < ApplicationController
   def thankyou
     
   end
+  
+  
   
 end

@@ -10,8 +10,6 @@
 <body>
 <% if signed_in? %>
 <%= render 'layouts/menu' %>
-<% else %>
-<p style="display: none;">Not signed in</p>
 <% end %>
 <div class="container">
 	<%= render partial: "layouts/flash_messages", flash: flash %> 
@@ -19,5 +17,10 @@
 </div>
 
 	<%=  render 'layouts/includes/bootstrap_js' %>
+	
+	<% unless signed_in? %>
+		<%= "Signed in" %>
+	<% end %>
+	
 </body>
 </html>
