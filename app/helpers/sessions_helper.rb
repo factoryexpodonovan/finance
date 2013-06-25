@@ -16,12 +16,16 @@ module SessionsHelper
   def current_finance_customer
     @current_finance_customer ||= FinanceCustomer.find_by_remember_token(cookies[:remember_token])
   end
-  
+
   def signed_in_finance_customer
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to signin_url, notice: 'PLease sign in.'
     end
+  end
+
+  def admin_finance_customer
+    redirect_to signin_url unless current_finance_customer.admin?
   end
   
   

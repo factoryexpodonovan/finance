@@ -23,7 +23,12 @@ Finance::Application.routes.draw do
 
   localized do
     resources :finance_customers
-    resources :finance_leads
+    resources :finance_leads do
+      collection do
+        get 'countstates'
+      end
+    end
+
   end
 
   

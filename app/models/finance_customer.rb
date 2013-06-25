@@ -47,14 +47,22 @@ class FinanceCustomer < ActiveRecord::Base
   
   def limit
     
-    ## set to view_limit UNLESS it's unset or 0
-    view_limit unless (view_limit.nil? || view_limit == 0)
+   
+    
+    
+    dsp_limit = "none"
     
     ##set to date_limit UNLESS it's unset
-    date_limit unless (date_limit.nil?)
+    dsp_limit = date_limit unless (date_limit.nil?)
     
-     
-    end
+    
+    ## set to view_limit UNLESS it's unset or 0
+    dsp_limit = view_limit unless (view_limit.nil? || view_limit == 0)
+    
+    return dsp_limit
+    
+    ##set to none otherwise
+    
     
   end
   

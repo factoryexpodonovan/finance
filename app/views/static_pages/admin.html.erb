@@ -7,7 +7,7 @@
 			<%= link_to 'View Leads as Member', "#", :class => 'btn' %>
 			<br />
 			
-			<%= link_to 'Leads by State by Month', "#", :class => 'btn' %>
+			<%= link_to 'Leads by State by Month', countstates_finance_leads_url, :class => 'btn' %>
 			<%= link_to 'Count Members By State', "#", :class => 'btn' %>
 			<%= link_to 'Manage States', "#", :class => 'btn' %>
 			
@@ -32,8 +32,9 @@
 					<tr>
 						<td><%= finance_customer.name %></td>
 						<td><%= finance_customer.limit %></td>
-						<%= render 'layouts/finance_customer_actions'%>
+						
 						<td>
+						<%= render :partial => "finance_customers/finance_customer_actions", :locals => { :finance_customer => finance_customer }%>
 							
 						</td>
 					</tr>

@@ -1,10 +1,10 @@
 class FinanceLeadsController < ApplicationController
   
-  #before_filter :signed_in_finance_customer,
-  #                only: [:index, :show]
+  before_filter :signed_in_finance_customer,
+                  only: [:index, :show]
   
-  #before_filter :admin_user,
-  #                only: [:new, :edit, :update, :destroy]
+  before_filter :admin_finance_customer,
+                  only: [:new, :edit, :update, :destroy]
   
   # GET /finance_leads
   # GET /finance_leads.json
@@ -15,6 +15,14 @@ class FinanceLeadsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @finance_leads }
     end
+  end
+
+  # GET /finance_leads/countstates
+  def countstates
+    @finance_leads = FinanceLead.all
+    @states = State.all
+
+
   end
 
   # GET /finance_leads/1
@@ -84,6 +92,7 @@ class FinanceLeadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   
   
   
